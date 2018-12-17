@@ -1,0 +1,44 @@
+<div>
+  <form>
+    product id : <input type="text" name="id" [(ngModel)]='id' /> <br/> <br/>
+    product name : <input type="text" name="name" [(ngModel)]='name' /> <br/> <br/>
+    product price : <input type="number" name="price" [(ngModel)]='price' /> <br/> <br/>
+    product quantity: <input type="number" name="quantity" [(ngModel)]='quantity' /> <br/> <br/>
+
+    <div>
+      <strong [class.redColor]="doit" id="Msg"></strong>
+    </div>
+
+    <button (click)="addproduct()" [class.btnMargin]="doit"> Add Products </button>
+    <button (click)="printproductData()" [class.btnMargin]="doit"> Display Products Data </button>
+    <button (click)="sellproduct()" [class.btnMargin]="doit"> Sell Products </button>
+  </form>
+
+  <table [style.style-table]="doit" *ngIf="isActive?'hidden':''" >
+    <thead>
+      <tr>
+        <td width="5%">  #</td>
+        <td width="10%">ID</td>
+        <td width="25%">Name</td>
+        <td width="15%">Price</td>
+        <td width="15%">quantity</td>
+        <td width="15%">Income</td>
+        <td width="15%">Profit</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let obj of result ; index as i ;'>
+        <td> {{i}}</td>
+        <td>{{obj.id}}</td>
+        <td>{{obj.name}}</td>
+        <td>{{obj.price}}</td>
+        <td>{{obj.quantity}}</td>
+      </tr>
+<tr>
+  <td colspan="5"></td>
+  <td>{{income}}</td>
+  <td>{{profit}}</td>
+</tr>
+    </tbody>
+  </table>
+</div>
